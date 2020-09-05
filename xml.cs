@@ -86,21 +86,21 @@ namespace socket_cs
             rootFirst.AppendChild(xml.ReadNode(row4.CreateReader()) as XmlElement);
 
             XElement row5 = new XElement("CONTA",//集装箱号
-                     new XElement("CONTA_NUM", "2"),
-                     new XElement("CONTA_RECO", "1"),//识别是否正常  1正常 0错
+                                new XElement("CONTA_NUM", "2"),
+                                new XElement("CONTA_RECO", "1"),//识别是否正常  1正常 0错
 
 
-                     new XElement("CONTA_ID_F", "HLXU4074106"),//前箱号（标签必须有，但是值可以为空）
-                     new XElement("CONTA_ID_B", "FCIU9176921"),//后箱号（标签必须有，但是值可以为空）
-                     new XElement("CONTA_MODEL_F", "20"),//前箱型（标签必须有，但是值可以为空）
-                     new XElement("CONTA_MODEL_B", "20")//后箱型（标签必须有，但是值可以为空）
+                                new XElement("CONTA_ID_F", "HLXU4074106"),//前箱号（标签必须有，但是值可以为空）
+                                new XElement("CONTA_ID_B", "FCIU9176921"),//后箱号（标签必须有，但是值可以为空）
+                                new XElement("CONTA_MODEL_F", "20"),//前箱型（标签必须有，但是值可以为空）
+                                new XElement("CONTA_MODEL_B", "20")//后箱型（标签必须有，但是值可以为空）
                 );
             rootFirst.AppendChild(xml.ReadNode(row5.CreateReader()) as XmlElement);
 
 
             XElement row6 = new XElement("SEAL",
-                     new XElement("ESEAL_ID", "10011003"),//电子关锁号,双锁中间以“|”分开
-                     new XElement("SEAL_KEY", "")//值为空
+                                new XElement("ESEAL_ID", "10011003"),//电子关锁号,双锁中间以“|”分开
+                                new XElement("SEAL_KEY", "")//值为空
 
                 );
             rootFirst.AppendChild(xml.ReadNode(row6.CreateReader()) as XmlElement);
@@ -149,12 +149,11 @@ namespace socket_cs
             rootFirst.AppendChild(cxml);
 
             XElement row2 = new XElement("GPS",
-                    new XElement("VE_NAME", ""),
-                    new XElement("GPS_ID", ""),
-                    new XElement("ORIGIN_CUSTOMS", ""),
-                    new XElement("DEST_CUSTOMS", "")
-
-                );
+                                new XElement("VE_NAME", ""),
+                                new XElement("GPS_ID", ""),
+                                new XElement("ORIGIN_CUSTOMS", ""),
+                                new XElement("DEST_CUSTOMS", "")
+                             );
 
             XmlElement cxm2 = xml.ReadNode(row2.CreateReader()) as XmlElement;
             rootFirst.AppendChild(cxm2);
@@ -162,20 +161,20 @@ namespace socket_cs
             XElement row3 = new XElement("SEAL",
                      new XElement("ESEAL_ID", ""),
                      new XElement("SEAL_KEY", "")
-                     );
+                            );
 
             XmlElement cxm3 = xml.ReadNode(row3.CreateReader()) as XmlElement;
             rootFirst.AppendChild(cxm3);
 
             XElement row4 = new XElement("FORM_ID",""
-                     );
+                            );
 
             XmlElement cxm4 = xml.ReadNode(row4.CreateReader()) as XmlElement;
             rootFirst.AppendChild(cxm4);
 
 
             XElement row5 = new XElement("OP_HINT", ""
-                     );
+                            );
 
             XmlElement cxm5 = xml.ReadNode(row5.CreateReader()) as XmlElement;
             rootFirst.AppendChild(cxm5);
@@ -199,7 +198,7 @@ namespace socket_cs
             xml.AppendChild(rootFirst);
 
             XElement row1 = new XElement("EXCUTE_COMMAND",""
-                     );
+                            );
 
             XmlElement cxm1 = xml.ReadNode(row1.CreateReader()) as XmlElement;
             rootFirst.AppendChild(cxm1);
@@ -209,16 +208,16 @@ namespace socket_cs
                                 new XElement("GPS_ID", ""),
                                 new XElement("ORIGIN_CUSTOMS", ""),
                                 new XElement("DEST_CUSTOMS", "")
-                     );
+                            );
 
             XmlElement cxm2 = xml.ReadNode(row2.CreateReader()) as XmlElement;
             rootFirst.AppendChild(cxm2);
 
             XElement row3 = new XElement("SEAL",
-                    new XElement("ESEAL_ID", "123"),
-                    new XElement("SEAL_KEY", "123~!#$"),
-                    new XElement("OPEN_TIMES", "")
-                    );
+                                new XElement("ESEAL_ID", "123"),
+                                new XElement("SEAL_KEY", "123~!#$"),
+                                new XElement("OPEN_TIMES", "")
+                            );
 
             XmlElement cxm3 = xml.ReadNode(row3.CreateReader()) as XmlElement;
             rootFirst.AppendChild(cxm3);
