@@ -148,8 +148,7 @@ namespace CreateXml
                 sr.Close();
                 stream.Close();
                 return xmlString;
-                
-     
+
             }
         }
     }
