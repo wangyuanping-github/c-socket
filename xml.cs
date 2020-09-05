@@ -290,7 +290,7 @@ namespace socket_cs
             sr.Close();
             stream.Close();
             return xmlString;
-            
+         
          }
     }
 }
