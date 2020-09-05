@@ -280,6 +280,7 @@ namespace socket_cs
 
         public string XmlToString(XmlDocument xmlDoc)
         {
+            
             MemoryStream stream = new MemoryStream();
             XmlTextWriter writer = new XmlTextWriter(stream, null);
             writer.Formatting = Formatting.Indented;
@@ -290,6 +291,7 @@ namespace socket_cs
             sr.Close();
             stream.Close();
             return xmlString;
+            
          }
     }
 }
