@@ -1,3 +1,4 @@
+
 using System;
 using System.Net.Sockets;
 using System.Threading;
@@ -6,6 +7,8 @@ using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using System.IO;
+using socket_cs;
+
 
 
 
@@ -13,6 +16,8 @@ namespace socket
 {
     class Program
     {
+
+
         static void Main(string[] args)
         {
             //设定服务器IP地址  
@@ -49,18 +54,30 @@ namespace socket
 
             //long xml_size = GetFileSize(@"C:\Users\wangyuanping\Desktop\C#\my\XMLInfoGather.xml");
             //计算文件大小
+            xml_file xml_path = new xml_file();//XMLInfoGather  XMLInfoWLJKRet   XMLControlCommand  XMLControlFeedback
 
-            string path = @"C:\Users\wangyuanping\Desktop\zz.xml";//文件大小
+            string path =xml_path.XMLControlCommand();
+            //string path = @"C:\Users\wangyuanping\Desktop\XMLInfoGather.xml";
+
+
+            Console.WriteLine(xml_path);
+
+
+
+            // @"C:\Users\wangyuanping\Desktop\XMLInfoGather.xml";//文件大小
             //int xml_size = GetFileSize(path);
             FileInfo fi = new FileInfo(path);
             long size = fi.Length;
-            int xml_size = (int)size;
+            //int xml_size = (int)size;
 
-            
+
             System.Xml.XmlDocument doc = new System.Xml.XmlDocument();//新建对象
             doc.Load(path);//XML文件路径
             string content = doc.InnerXml;
-            Console.WriteLine(content);//把xml文件
+            Console.WriteLine(content.Length);
+            int xml_size = System.Text.Encoding.Default.GetBytes(content.ToCharArray()).Length;
+
+            //Console.WriteLine(content);//把xml文件
 
 
             Console.WriteLine("xml_size 字符串长度为{0}字节", xml_size);
@@ -86,7 +103,6 @@ namespace socket
             //Console.WriteLine(my_arry);
 
             byte[] Total_Length = BitConverter.GetBytes(xml_size + 40); //总包总长
-            Console.WriteLine(Total_Length);
 
             byte[] Information_type = new byte[1];//消息类型
 
@@ -109,7 +125,7 @@ namespace socket
             byte[] socket_data1 = new byte[2];//发送包尾
             socket_data1[0] = 0xFF;
             socket_data1[1] = 0xFF;
-        
+
 
 
             clientSocket.Send(socket_Baotou);//包头码
@@ -120,27 +136,23 @@ namespace socket
             clientSocket.Send(Encoding.UTF8.GetBytes(("I")));//进出口标志
             clientSocket.Send(Identification_code);//辨识码 00 00 00 00 
             clientSocket.Send(code_length);//发送包长度
-          //clientSocket.Send(Encoding.UTF8.GetBytes("123456789")); //发送文件
-            using (StreamReader sr = new StreamReader(path))
-            {
-                string line;
+                                           //clientSocket.Send(Encoding.UTF8.GetBytes("123456789")); //发送文件
+                                           //using (StreamReader sr = new StreamReader(path))
+                                           //{
+                                           //    string line;
 
-                // 从文件读取并显示行，直到文件的末尾 
-                while ((line = sr.ReadLine()) != null)
-                {
-                    Console.WriteLine(line);
-                    clientSocket.Send(Encoding.UTF8.GetBytes(line));
+            //    // 从文件读取并显示行，直到文件的末尾 
+            //    while ((line = sr.ReadLine()) != null)
+            //    {
+            //        Console.WriteLine(line);
+            //        clientSocket.Send(Encoding.UTF8.GetBytes(line));
 
-                }
-             clientSocket.Send(socket_data1);
-             Console.ReadLine();
-
-
-
-
-
-
-            }
+            //    }
+            //}
+            clientSocket.Send(Encoding.UTF8.GetBytes(content));
+            clientSocket.Send(socket_data1);
+            Console.ReadLine();
+            
         }
     }
 }
